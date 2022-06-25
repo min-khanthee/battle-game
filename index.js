@@ -16,6 +16,16 @@ const monster = {
   diceCount: 1,
 }
 
+function getDiceRollArray(diceCount) {
+  const newDiceRolls = []
+  for (let i = 0; i < diceCount; i++) {
+    newDiceRolls.push(Math.floor(Math.random() * 6) + 1)
+  }
+  return newDiceRolls
+}
+
+// getDiceRollArray(3)
+
 function renderCharacter(data) {
   const { elementId, name, avatar, health, diceRoll, diceCount } = data
 
