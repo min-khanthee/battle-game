@@ -29,6 +29,15 @@ function getDiceHtml(diceCount) {
     .join('')
 }
 
+// Constructor function
+function Character(data) {
+  this.elementId = data.elementId
+  this.name = data.name
+  this.avatar = data.avatar
+  this.health = data.health
+  this.diceCount = data.diceCount
+}
+
 // getDiceRollArray(3)
 
 function renderCharacter(data) {
