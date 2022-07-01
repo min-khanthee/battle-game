@@ -5,8 +5,10 @@ function Character(data) {
 
   this.diceArray = getDicePlaceholderHtml(this.diceCount)
   //methods on constructor function
+
   this.getDiceHtml = function (diceCount) {
-    return getDiceRollArray(diceCount)
+    this.currentDiceScore = getDiceRollArray(this.diceCount)
+    this.diceArray = this.currentDiceScore
       .map((num) => {
         return `<div class="dice">${num}</div>`
       })
