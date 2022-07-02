@@ -3,6 +3,10 @@ import { getDiceRollArray, getDicePlaceholderHtml } from '/utils.js'
 function Character(data) {
   Object.assign(this, data)
 
+  this.takeDamage = function () {
+    console.log(`${this.name} is damaged`)
+  }
+
   this.diceArray = getDicePlaceholderHtml(this.diceCount)
   //methods on constructor function
 
