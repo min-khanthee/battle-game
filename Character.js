@@ -4,28 +4,19 @@ function Character(data) {
   Object.assign(this, data)
 
   this.takeDamage = function (attackScoreArray) {
-    console.log(`${this.name}: ${attackScoreArray}`)
-
-    const totalAttackScore = attackScoreArray.reduce(function (total, num) {
-      return total + num
-    })
+    const totalAttackScore = attackScoreArray.reduce((total, num) => total + num)
     this.health -= totalAttackScore
     if (this.health <= 0) {
       this.dead = true
       this.health = 0
     }
   }
-
   this.diceArray = getDicePlaceholderHtml(this.diceCount)
   //methods on constructor function
 
-  this.getDiceHtml = function (diceCount) {
+  this.getDiceHtml = function () {
     this.currentDiceScore = getDiceRollArray(this.diceCount)
-    this.diceArray = this.currentDiceScore
-      .map((num) => {
-        return `<div class="dice">${num}</div>`
-      })
-      .join('')
+    this.diceArray = this.currentDiceScore.map((num) => `<div class="dice">${num}</div>`).join('')
   }
 
   this.getCharacterHtml = function () {
