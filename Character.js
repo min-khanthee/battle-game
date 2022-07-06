@@ -1,7 +1,11 @@
 import { getDiceRollArray, getDicePlaceholderHtml } from '/utils.js'
 
+const getPercentage = (remainingHealth, maximumHealth) => (100 * remainingHealth) / maximumHealth
+
 function Character(data) {
   Object.assign(this, data)
+
+  this.maxHealth = this.health
 
   this.takeDamage = function (attackScoreArray) {
     const totalAttackScore = attackScoreArray.reduce((total, num) => total + num)
@@ -10,6 +14,7 @@ function Character(data) {
       this.dead = true
       this.health = 0
     }
+    console.log(getPercentage(this.health, this.maxHealth))
   }
   this.diceArray = getDicePlaceholderHtml(this.diceCount)
   //methods on constructor function
