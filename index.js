@@ -6,11 +6,11 @@ let monstersArray = ['orc', 'demon', 'goblin']
 
 function attack() {
   wizard.getDiceHtml()
-  orc.getDiceHtml()
-  wizard.takeDamage(orc.currentDiceScore)
-  orc.takeDamage(wizard.currentDiceScore)
+  monster.getDiceHtml()
+  wizard.takeDamage(monster.currentDiceScore)
+  monster.takeDamage(wizard.currentDiceScore)
   render()
-  if (orc.dead || wizard.dead) {
+  if (monster.dead || wizard.dead) {
     endGame()
   }
 }
@@ -22,11 +22,11 @@ function getNewMonster() {
 
 function endGame() {
   const endMessage =
-    wizard.health === 0 && orc.health === 0
+    wizard.health === 0 && monster.health === 0
       ? 'No victors, all creatures are dead'
       : wizard.health > 0
       ? 'The Wizard wins'
-      : 'The Orc is victorious!'
+      : 'The Monster is victorious!'
 
   const endEmoji = wizard.health > 0 ? '🔮' : '☠️'
 
@@ -39,13 +39,12 @@ function endGame() {
 
 function render() {
   document.getElementById('hero').innerHTML = wizard.getCharacterHtml()
-  document.getElementById('monster').innerHTML = orc.getCharacterHtml()
+  document.getElementById('monster').innerHTML = monster.getCharacterHtml()
 }
 
 document.getElementById('attack-button').addEventListener('click', attack)
 
 const wizard = new Character(characterData.hero)
-const orc = new Character(characterData.monster)
 let monster = getNewMonster()
 
 render()
