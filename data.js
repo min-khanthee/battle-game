@@ -9,8 +9,8 @@ const characterData = {
   orc: {
     name: 'Orc',
     avatar: 'images/orc.png',
-    health: 55,
-    diceCount: 3,
+    health: 35,
+    diceCount: 1,
     currentDiceScore: [],
   },
   demon: {
