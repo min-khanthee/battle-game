@@ -18,6 +18,10 @@ function attack() {
   }
 }
 
+function getNewMonster() {
+  nextMonsterData = characterData[monstersArray.shift()]
+}
+
 function endGame() {
   const endMessage =
     wizard.health === 0 && orc.health === 0
