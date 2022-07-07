@@ -2,10 +2,7 @@ import characterData from '/data.js'
 import Character from '/Character.js'
 // Constructor function
 
-const wizard = new Character(characterData.hero)
-const orc = new Character(characterData.monster)
-
-document.getElementById('attack-button').addEventListener('click', attack)
+let monstersArray = ['orc', 'demon', 'goblin']
 
 function attack() {
   wizard.getDiceHtml()
@@ -19,7 +16,8 @@ function attack() {
 }
 
 function getNewMonster() {
-  nextMonsterData = characterData[monstersArray.shift()]
+  const nextMonsterData = characterData[monstersArray.shift()]
+  return nextMonsterData ? new Character(nextMonsterData) : {}
 }
 
 function endGame() {
@@ -43,5 +41,11 @@ function render() {
   document.getElementById('hero').innerHTML = wizard.getCharacterHtml()
   document.getElementById('monster').innerHTML = orc.getCharacterHtml()
 }
+
+document.getElementById('attack-button').addEventListener('click', attack)
+
+const wizard = new Character(characterData.hero)
+const orc = new Character(characterData.monster)
+let monster = getNewMonster()
 
 render()
